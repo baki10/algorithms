@@ -81,53 +81,7 @@ public class SortUtil {
    */
   public static int[] mergeSort(int[] in) {
     int[] arr = Arrays.copyOf(in, in.length);
-    return mergeSortRecursion(arr);
-  }
-
-  private  static int[] mergeSortRecursion(int[] list) {
-    if (list.length <= 1) {
-      return list;
-    }
-
-    // Split the array in half
-    int[] leftHalf = new int[list.length / 2];
-    int[] rightHalf = new int[list.length - leftHalf.length];
-    System.arraycopy(list, 0, leftHalf, 0, leftHalf.length);
-    System.arraycopy(list, leftHalf.length, rightHalf, 0, rightHalf.length);
-
-    // Sort each half
-    mergeSortRecursion(leftHalf);
-    mergeSortRecursion(rightHalf);
-
-    // Merge the halves together, overwriting the original array
-    merge(leftHalf, rightHalf, list);
-    return list;
-  }
-
-  private static void merge(int[] first, int[] second, int[] result) {
-    // Merge both halves into the result array
-    // Next element to consider in the first array
-    int iFirst = 0;
-    // Next element to consider in the second array
-    int iSecond = 0;
-
-    // Next open position in the result
-    int j = 0;
-    // As long as neither iFirst nor iSecond is past the end, move the
-    // smaller element into the result.
-    while (iFirst < first.length && iSecond < second.length) {
-      if (first[iFirst] < second[iSecond]) {
-        result[j] = first[iFirst];
-        iFirst++;
-      } else {
-        result[j] = second[iSecond];
-        iSecond++;
-      }
-      j++;
-    }
-    // copy what's left
-    System.arraycopy(first, iFirst, result, j, first.length - iFirst);
-    System.arraycopy(second, iSecond, result, j, second.length - iSecond);
+    return new MergeSort().sort(arr);
   }
 
   private static int findMinIndex(int[] arr, int start, int end) {
