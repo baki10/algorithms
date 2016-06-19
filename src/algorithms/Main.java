@@ -49,6 +49,18 @@ public class Main {
     System.out.println("x << 5\t\t11000000\t" + (x <<= 5));
     System.out.println("x >> 2\t\t11110000\t" + (x >>= 2));
     System.out.println("------------------------------------");
+    
+    System.out.println("----------Swapping numbers with using bit XOR operation---------");
+    int a = 12;
+    int b = 139;
+    System.out.println("a = " + a + ", b = " + b);
+    a = a^b;
+    System.out.println("a = a^b " + a);
+    b = a^b;
+    System.out.println("b = a^b " + b);
+    a = a^b;
+    System.out.println("a = a^b " + a);
+    System.out.println("-----------------------------------");
   }
 
   private static String calcSortTime(int[] randomArray, Sort sort) {
