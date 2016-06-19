@@ -35,24 +35,33 @@ public class Main {
     System.out.println(Arrays.toString(arr) + " -> "
             + Arrays.toString(mergeSort) + " merge sort");
 
-    int[] randomArray = SortUtil.getRandomArray(300000, -1000, 1000);
+    int[] randomArray = SortUtil.getRandomArray(10000, -1000, 1000);
 
     for (Sort s : Sort.values()) {
       System.out.println(s.toString() + " : " + calcSortTime(randomArray, s));
     }
+
+    System.out.println("-----------bit operations-----------");
+    byte x = 7; 
+    System.out.println("byte x\t\t00000111\t" + x);
+    System.out.println("x >> 1\t\t00000011\t" + (x >>= 1));
+    System.out.println("x << 1\t\t00000110\t" + (x <<= 1));
+    System.out.println("x << 5\t\t11000000\t" + (x <<= 5));
+    System.out.println("x >> 2\t\t11110000\t" + (x >>= 2));
+    System.out.println("------------------------------------");
   }
 
   private static String calcSortTime(int[] randomArray, Sort sort) {
     long start = System.currentTimeMillis();
     switch (sort) { // array of 300 000 elements
-      case INSERTION: // 71 392 ms
-        SortUtil.insertionSort(randomArray);
-        break;
-      case SELECTION: // 266 997 ms
+      case SELECTION: // 71 392 ms
         SortUtil.selectionSort(randomArray);
         break;
-      case BUBBLE:  // 47 072 ms
+      case BUBBLE:  // 266 997 ms
         SortUtil.bubbleSort(randomArray);
+        break;
+      case INSERTION: // 47 072 ms
+        SortUtil.insertionSort(randomArray);
         break;
       case MERGE: // 35 512 ms
         SortUtil.mergeSort(randomArray);
